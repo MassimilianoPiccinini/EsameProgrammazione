@@ -1,5 +1,5 @@
 <center>
-  <img src="Media/logo.jpg" width="100" height="100" />
+  <img src="logo.jpg" width="100" height="100" />
 </center>
 <h1>Meteo.Univpm</h1>
 <p>breve descrizione (2/3 righe)</p>
