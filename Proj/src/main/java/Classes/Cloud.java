@@ -1,0 +1,1 @@
+package Classes;public class Cloud {    private float clouds;	//TODO: delete this constructor	public Cloud() {			}	    public Cloud(float clouds) {		this.clouds = clouds;	}	public float getClouds() {        return clouds;    }    public void setClouds(float clouds) {        this.clouds = clouds;    }}
