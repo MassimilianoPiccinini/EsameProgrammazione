@@ -13,7 +13,7 @@
 Un esempio del JSON restituito da OpenWeather quando si richiedono le condizioni di meteo di Londra é, effettuando la chiamata:
   <br>
   <code>
-    api.openweathermap.org/data/2.5/weather?id=2643743&appid=<apikey>
+    api.openweathermap.org/data/2.5/weather?id=2643743&appid='apikey'
   </code>
   <br><br>
 <code>
