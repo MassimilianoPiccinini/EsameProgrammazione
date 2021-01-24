@@ -35,25 +35,32 @@ public class Temperatures {
         List<Temperature> temps = city.getTemperatures();
         float somma_temp = 0;
         float media_temp = 0;
-        float somma_temperatureMin = 0;
-        float media_temperatureMin = 0;
-        float somma_temperatureMax = 0;
-        float media_temperatureMax = 0;
+        float tempMax = -100;
+        float tempMin = 100;
         float somma_var = 0;
         float varianza = 0;
         for(int i=0; i < temps.size(); i++) {
             somma_temp += temps.get(i).getTemp();
-            somma_temperatureMin += temps.get(i).getTemperatureMin();
-            somma_temperatureMax += temps.get(i).getTemperatureMax();
+            //somma_temperatureMin += temps.get(i).getTemperatureMin();
+            //somma_temperatureMax += temps.get(i).getTemperatureMax();
         }
         media_temp = somma_temp / temps.size();
-        media_temperatureMin = somma_temperatureMin / temps.size();
-        media_temperatureMax = somma_temperatureMax / temps.size();
+        // New
+        for (int i = 0; i < temps.size(); i++) {
+        	if (temps.get(i).getTemperatureMax() > tempMax) {
+        		tempMax = temps.get(i).getTemperatureMax();
+        	}
+        	if (temps.get(i).getTemperatureMin() < tempMin) {
+        		tempMin = temps.get(i).getTemperatureMin();
+        	}
+        }
+        //media_temperatureMin = somma_temperatureMin / temps.size();
+        //media_temperatureMax = somma_temperatureMax / temps.size();
         for(int i=0; i < temps.size(); i++) {
             somma_var += java.lang.Math.pow(temps.get(i).getTemp()-media_temp, 2);
         }
         varianza = somma_var / temps.size(); 
-        Pair<Temperature, Float> stats = new Pair<Temperature, Float>(new Temperature(media_temp, 0, media_temperatureMax, 0, media_temperatureMin, 0), (float) varianza);
+        Pair<Temperature, Float> stats = new Pair<Temperature, Float>(new Temperature(media_temp, 0, tempMax, 0, tempMin, 0), (float) varianza);
         return stats;
     }
 	
@@ -272,10 +279,6 @@ public class Temperatures {
         	records.add(record1);
         	
         	objCity.replace("records", records);
-        	//replace oldCity with city (storage, city)
-        	//storage.add(city);
-        	//replaceCity(storage);
-        	//storage.add(city);
         	storage.remove(objCity);
         	storage.add(objCity);
         	FileManager.writeJarray(storage, Variables.getHistoryPath());

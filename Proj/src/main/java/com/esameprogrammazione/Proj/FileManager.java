@@ -64,7 +64,7 @@ public class FileManager {
             while (iterator.hasNext()) {
                 JSONObject obj = (JSONObject) iterator.next();
 
-                String id1=Long.toString(id);
+                String id1 = Long.toString(id);
 
                 if (obj.get("id") instanceof Long) {
                     Long id2 = (Long) obj.get("id");
@@ -235,7 +235,6 @@ public class FileManager {
                 JSONObject obj = (JSONObject) iterator.next();
                 String currentName = (String) obj.get("name");
 	            if (currentName.trim().toLowerCase().equals(name.trim().toLowerCase())) {
-
 	            	Long id = (Long) obj.get("id");
 		            String country = (String) obj.get("country");
 	            	City city = new City(id, currentName, country);
@@ -271,50 +270,47 @@ public class FileManager {
 	
 	public static Triplet<Boolean, Boolean, JSONObject> find (JSONArray array, long id, boolean edit) throws IdNotFoundException {
 		for (int i = 0; i < array.size(); i++) {
-            JSONObject obj= null;
-            obj = (JSONObject) array.get(i);
+            JSONObject obj = (JSONObject) array.get(i);
             if (obj != null && obj.get("id") != null) {
 	            long obj_id = (long) obj.get("id");
-	            JSONArray records = (JSONArray) obj.get("records");
-	            int dayInt = 0;
-	            if (records != null) {
-	            	Iterator<?> iterator = records.iterator();
-	    	        while (iterator.hasNext()) {
-	    	        	JSONObject record = (JSONObject) iterator.next();
-	    	        	long dateTimeLong = 0;
-	    	        	if (record.get("dt") instanceof Long) {
-	    		        	Long date_time = (Long) record.get("dt");
-	    		        	dateTimeLong = date_time.longValue();
-	    		        }else if(record.get("dt") instanceof Double) {
-	    		        	Double date_time = (Double) record.get("dt");
-	    		        	dateTimeLong = date_time.longValue();
-	    		        }else if(record.get("dt") instanceof Float) {	
-	    		        	Float date_time = (Float) record.get("dt");
-	    		        	dateTimeLong = date_time.longValue();
-	    		        }
-	    	            Date date = new Date(dateTimeLong + 28800000);
-	    	            SimpleDateFormat df2 = new SimpleDateFormat("dd");
-	    	            String day = df2.format(date);
-	    	            if (dayInt < Integer.parseInt(day)) {
-	    	            	dayInt = Integer.parseInt(day);
-	    	            }
-	    	        }
-	            }else {
-	            	dayInt = getIntData(true) - 1;
-	            }
 		        if((obj_id == id)) {
+		            JSONArray records = (JSONArray) obj.get("records");
+		            int dayInt = 0;
+		            if (records != null) {
+		            	Iterator<?> iterator = records.iterator();
+		    	        while (iterator.hasNext()) {
+		    	        	JSONObject record = (JSONObject) iterator.next();
+		    	        	long dateTimeLong = 0;
+		    	        	if (record.get("dt") instanceof Long) {
+		    		        	Long date_time = (Long) record.get("dt");
+		    		        	dateTimeLong = date_time.longValue();
+		    		        }else if(record.get("dt") instanceof Double) {
+		    		        	Double date_time = (Double) record.get("dt");
+		    		        	dateTimeLong = date_time.longValue();
+		    		        }else if(record.get("dt") instanceof Float) {	
+		    		        	Float date_time = (Float) record.get("dt");
+		    		        	dateTimeLong = date_time.longValue();
+		    		        }
+		    	            Date date = new Date(dateTimeLong + 28800000); // Fuso orario
+		    	            SimpleDateFormat df2 = new SimpleDateFormat("dd");
+		    	            String day = df2.format(date);
+		    	            if (dayInt < Integer.parseInt(day)) { //prendere giorno complessivo annuale: getIntDate()
+		    	            	dayInt = Integer.parseInt(day); //prendere giorno complessivo annuale: getIntDate()
+		    	            }
+		    	        }
+		            }else {
+		            	dayInt = getIntData(true) - 1;
+		            }
 			        if (dayInt < getIntData(true)) {
-			        	if (edit) {
-			        		return new Triplet<Boolean, Boolean, JSONObject> (true, true, obj);
-			        	}else {
+			        	//if (edit) {
+			        		return new Triplet<Boolean, Boolean, JSONObject> (true, edit, obj);
+			        	/*}else {
 			        		return new Triplet<Boolean, Boolean, JSONObject> (true, false, obj);
-			        	}
+			        	}*/
 			        }else {
 			          	return new Triplet<Boolean, Boolean, JSONObject> (true, false, obj);
 			        }
 		        }
-            }else {
-            	throw new IdNotFoundException("The entered id does not refer to an European Capital: " + id);
             }
         }
 		throw new IdNotFoundException("The entered id does not refer to an European Capital: " + id);

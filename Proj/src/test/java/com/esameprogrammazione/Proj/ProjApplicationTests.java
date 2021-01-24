@@ -117,10 +117,10 @@ class ProjApplicationTests {
     void testGetStats() {
         ProjApplication prj = new ProjApplication();
         JSONObject obj = new JSONObject();
-        obj.put("tempMax", 11.280001);
+        obj.put("tempMax", 12.0);
         obj.put("temp", 10.57);
         obj.put("variance", 0.46239975);
-        obj.put("tempMin", 10.0);
+        obj.put("tempMin", 9.44);
 		try {
 			int[] period = {0, 2};
 			assertEquals(obj, prj.stats(2643743, "c", "0", "2"));

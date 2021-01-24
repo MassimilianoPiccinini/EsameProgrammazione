@@ -196,14 +196,13 @@ public class ProjApplication {
 			throw new NameCityNotFoundException("There are no cities named: " + name);
 		}else {
 			JSONArray objArray = new JSONArray();
-			HashMap<String, Object> parameters = new HashMap<String, Object>();
+			JSONObject obj = new JSONObject();
 			for (City city : cities) {
-				parameters.put("id", city.getId());
-				parameters.put("name", city.getName());
-				parameters.put("country", city.getLastSystem().getCountry());
+				obj.put("id", city.getId());
+				obj.put("name", city.getName());
+				obj.put("country", city.getLastSystem().getCountry());
 				
-				JSONObject data = new JSONObject(parameters);
-				objArray.add(data);
+				objArray.add(obj);
 			}
 			return objArray;
 		}
@@ -363,7 +362,6 @@ public class ProjApplication {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        
         return cityList;
 	}
 	

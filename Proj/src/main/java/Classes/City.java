@@ -259,7 +259,7 @@ public class City {
 
 	        JSONObject objSys = (JSONObject) data_obj.get("sys");
 	        
-	        if (objSys.get("type") instanceof Long) {//ricontrollare
+	        if (objSys.get("type") instanceof Long) {
 	        	Long type = (Long) objSys.get("type");
 				getLastSystem().setType(type.intValue());
 	        }else if(objSys.get("type") instanceof Double) {
