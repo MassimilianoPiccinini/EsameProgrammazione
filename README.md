@@ -15,7 +15,7 @@ Un esempio del JSON restituito da OpenWeather quando si richiedono le condizioni
   <code>
     api.openweathermap.org/data/2.5/weather?id=2643743&appid=<apikey>
   </code>
-  <br>
+  <br><br>
 <code>
   {
     "coord": {
