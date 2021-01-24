@@ -34,42 +34,38 @@
 <br>
 <h2>Istruzioni sull'uso</h2>
 <p>Chiaramente sarebbe stato molto difficile, quasi impossibile con un file locale, salvare nello storico i dati di tutte le città del mondo; infatti questo servizio web è stato creato per le condizioni meteo delle principali capitali europee, nello specifico ne abbiamo scelte 10. Ovviamente non è preclusa all'utente la possibilità di ottenere le condizioni meteo di una qualsiasi altra città, non per forza una capitale. Per quanto riguarda il filtraggio su base periodica, avendo iniziato a salvare i dati nello storico il giorno 19 Gennaio 2021, abbiamo preso il 19 Gennaio come giorno 0. Per inserire il periodo, l'utente dovrà inserire due interi: il primo specifica il giorno d'inizio (ricordando che il 19 Gennaio rappresenta il giorno 0), il secondo invece rappresenta la durata del periodo di cui si vuole ottenere lo storico o le statistiche, a seconda della rotta utilizzata.</p>
-<p>
-  <code>
-    <ul>
-      <li>
-        Rome: 3169070
-      </li>
-      <li>
-        Paris: 2968815
-      </li>
-      <li>
-        Madrid: 3117735
-      </li>
-      <li>
-        Berlin: 2950158
-      </li>
-      <li>
-        London: 2643743
-      </li>
-      <li>
-        Amsterdam: 2759794
-      </li>
-      <li>
-        Athens: 264371
-      </li>
-      <li>
-        Lisbon: 2267057
-      </li>
-      <li>
-        Luxembourg: 2960315
-      </li>
-      <li>
-        Moscow: 524901
-      </li>
-    </ul>
-  </code>
-</p>
+<ul>
+    <li>
+      Rome: 3169070
+    </li>
+    <li>
+      Paris: 2968815
+    </li>
+    <li>
+      Madrid: 3117735
+    </li>
+    <li>
+      Berlin: 2950158
+    </li>
+    <li>
+      London: 2643743
+    </li>
+    <li>
+      Amsterdam: 2759794
+    </li>
+    <li>
+      Athens: 264371
+    </li>
+    <li>
+      Lisbon: 2267057
+    </li>
+    <li>
+      Luxembourg: 2960315
+    </li>
+    <li>
+      Moscow: 524901
+    </li>
+</ul>
 <h3>Meteo delle Capitali</h3>
 <p>La rotta <code>/</code> rappresenta la home directory, restituisce le condizioni meteo del giorno odierno delle 10 capitali europee che abbiamo scelto.</p>
 <br>
