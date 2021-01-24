@@ -66,7 +66,7 @@ Un esempio del JSON restituito da OpenWeather quando si richiedono le condizioni
 <ul>
   <li>
     <h3>Use-Case Diagram</h3>
-  <img src="usecasediagram.png" width="300" height="300" /><br>
+  <img src="usecasediagram.png" width="350" height="300" /><br>
   <p>Lo use case diagram prevede due attori: l'utente e l'amministratore.
   <br>L'amministratore ha il compito di aggiornare le capitali europee, e per farlo il programma prende le temperature da OpenWeather e le salva sull'apposito file dello Storico.
     <br>L'utente invece, dato che ci sono più città aventi lo stesso nome, usa il motore di ricerca per ottenere l'ID della città che desidera, che può poi andare ad inserire nella ricerca, specificando anche (opzionalmente) l'unità di misura in cui vuole i dati. Inoltre l'utente può ottenere lo storico e le statistiche di una Capitale Europea, letti e filtrati entrambi dallo Storico.
